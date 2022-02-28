@@ -1,2 +1,3 @@
 # Verteilte-Systeme-
-Gruppe: Leonard Bechtold, Leon, Jule Herzog
+Gruppe: Leonard Bechtold, Leon Steinbrenner, Jule Herzog
+
