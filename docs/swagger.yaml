@@ -1,0 +1,135 @@
+swagger: "2.0"
+info:
+  description: "This is a server API to store notebooks and notes"
+  version: "1.0.0"
+  title: "Distributed Systems Project"
+host: "petstore.swagger.io"
+basePath: "/v2"
+tags:
+- name: "notebook"
+  description: "Create, read, update and delete of notebooks"
+schemes:
+- "http"
+paths:
+  /api/notebook:
+    post:
+      tags:
+      - "notebook"
+      summary: "Add a new notebook"
+      description: ""
+      operationId: "addNotebook"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Notebook information"
+        required: true
+        schema:
+          $ref: "#/definitions/Notebook"
+      responses:
+        "405":
+          description: "Invalid input"
+    get:
+      tags:
+      - "notebook"
+      summary: "Get notebooks"
+      description: "Receive notebook"
+      operationId: "getNotebooks"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Notebook"
+  /api/notebook/{notebookId}:
+    get:
+      tags:
+      - "notebook"
+      summary: "Get notebook"
+      operationId: "getNotebook"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Notebook information to update"
+        required: true
+        schema:
+          $ref: "#/definitions/Notebook"
+      responses:
+        "404":
+          description: "Notebook not found"
+        "405":
+          description: "Validation exception"
+    put:
+      tags:
+      - "notebook"
+      summary: "Update an existing notebook"
+      operationId: "updateNotebook"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "notebookId"
+        in: "path"
+        description: "The notebook id that needs to be deleted"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "Notebook information to update"
+        required: true
+        schema:
+          $ref: "#/definitions/Notebook"
+      responses:
+        "404":
+          description: "Notebook not found"
+        "405":
+          description: "Validation exception"
+    delete:
+      tags:
+      - "notebook"
+      summary: "Deletes an existing notebook"
+      operationId: "deleteNotebook"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "notebookId"
+        in: "path"
+        description: "The notebook id that needs to be deleted"
+        required: true
+        type: "string"
+      responses:
+        "404":
+          description: "Notebook not found"
+        "405":
+          description: "Validation exception"
+
+definitions:
+  Notebook:
+    type: "object"
+    required:
+    - "name"
+    - "photoUrls"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      title:
+        type: "string"
+        example: "Distributed systems notebook"
+      description:
+        type: "string"
+        example: "This notebook contains all information about the lecture distributed systems at DBWH Karlsruhe."
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
