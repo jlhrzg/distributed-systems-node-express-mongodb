@@ -3,5 +3,13 @@
   "version": "1.0.0",
   "description": "Distributed system - REST API with node, express and mongodb. ",
   "main": "index.js",
-  "license": "MIT"
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mongoose": "^6.3.2",
+    "nodemon": "^2.0.16"
+  }
 }
