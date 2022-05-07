@@ -1,0 +1,7 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Distributed system - REST API with node, express and mongodb. ",
+  "main": "index.js",
+  "license": "MIT"
+}
