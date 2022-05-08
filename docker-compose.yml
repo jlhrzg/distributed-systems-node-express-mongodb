@@ -4,7 +4,7 @@ services:
     restart: always
     build: backend/
     environment:
-      - MONGO_URL='mongodb://mongo:27017/'
+      - MONGO_URL=mongodb://mongo:27017/
       - PORT=3000
     ports:
       - "3000:3000"
