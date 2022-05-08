@@ -9,7 +9,7 @@ router.post("/", async (req, res) => {
   const note = await Note.create({
     title: req.body.title,
     description: req.body.description,
-    content: "# Hello New Note",
+    content: "New Note",
     notebookId: req.body.notebookId
   });
   res.status(201).json(note);
