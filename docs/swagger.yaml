@@ -3,7 +3,6 @@ info:
   description: "This is a server API to store notebooks and notes"
   version: "1.0.0"
   title: "Distributed Systems Project"
-basePath: "/v2"
 tags:
 - name: "notebook"
   description: "Create, read, update and delete of notebooks"
@@ -222,8 +221,8 @@ definitions:
     - "title"
     - "description"
     properties:
-      id:
-        type: "integer"
+      _id:
+        type: "string"
         format: "string"
       title:
         type: "string"
@@ -231,6 +230,12 @@ definitions:
       description:
         type: "string"
         example: "This notebook contains all information about the lecture distributed systems at DBWH Karlsruhe."
+      createdAt:
+        type: "string"
+        example: "2022-05-08T21:06:26.405Z"
+      updatedAt:
+        type: "string"
+        example: "2022-05-08T21:06:26.405Z"
   Note:
     type: "object"
     required:
@@ -238,8 +243,8 @@ definitions:
     - "content"
     - "notebookId"
     properties:
-      id:
-        type: "integer"
+      _id:
+        type: "string"
         format: "string"
       title:
         type: "string"
@@ -250,3 +255,9 @@ definitions:
       notebookId:
         type: "string"
         example: "The id of the notebook to assign the note to."
+      createdAt:
+        type: "string"
+        example: "2022-05-08T21:06:26.405Z"
+      updatedAt:
+        type: "string"
+        example: "2022-05-08T21:06:26.405Z"
