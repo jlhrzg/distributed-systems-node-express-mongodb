@@ -15,3 +15,9 @@ yarn dev
 docker-compose build
 docker-compose up
 ```
+
+## Code format with prettier
+Before a commit format your code with the following command inside the [backend](backend) folder:
+```
+yarn prettier --write .
+```

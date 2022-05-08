@@ -22,11 +22,11 @@ app.use(morgan("combined"));
 app.use(cors());
 
 // add static directory
-app.use(express.static('static'))
+app.use(express.static("static"));
 
 app.use("/api/notebook", notebookRouter);
-app.use("/api/note", noteRouter)
+app.use("/api/note", noteRouter);
 
 app.listen(PORT, () => {
-    console.log(`Server started on port ${PORT}`);
-  });
+  console.log(`Server started on port ${PORT}`);
+});

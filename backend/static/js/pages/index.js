@@ -1,6 +1,10 @@
 // import of backend API wrapper
-import { getAllNotebooks, createNotebook, deleteNotebook } from "../utils/notebook.js";
-import {getAllNotes, deleteNote} from "../utils/note.js";
+import {
+  getAllNotebooks,
+  createNotebook,
+  deleteNotebook,
+} from "../utils/notebook.js";
+import { getAllNotes, deleteNote } from "../utils/note.js";
 
 // selectors to append data
 const notebooksList = document.getElementById("notebooks-list");
@@ -37,35 +41,34 @@ const renderNotebooks = async () => {
 };
 
 const renderNotes = async () => {
-    var notes = await getAllNotes();
-    console.log(notes);
-    console.log(notesList);
-    removeChildren(notesList);
+  var notes = await getAllNotes();
+  console.log(notes);
+  console.log(notesList);
+  removeChildren(notesList);
 
-    notes.forEach((note) => {
-      let li = document.createElement("li");
-      let a = document.createElement("a");
-      a.href = `/note.html?id=${note._id}`;
-      a.innerText = note.title;
-      li.appendChild(a);
+  notes.forEach((note) => {
+    let li = document.createElement("li");
+    let a = document.createElement("a");
+    a.href = `/note.html?id=${note._id}`;
+    a.innerText = note.title;
+    li.appendChild(a);
 
-      let deleteBtn = document.createElement("button");
-      deleteBtn.textContent = "Löschen";
-      deleteBtn.classList.add("delete-btn");
-      // event listener for deleting lists
-      deleteBtn.addEventListener("click", async () => {
-        // delete from db
-        const deleted = await deleteNote(note._id);
+    let deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Löschen";
+    deleteBtn.classList.add("delete-btn");
+    // event listener for deleting lists
+    deleteBtn.addEventListener("click", async () => {
+      // delete from db
+      const deleted = await deleteNote(note._id);
 
-        // when successfull remove it from local list
-        await renderNotes();
-      });
-
-      li.appendChild(deleteBtn);
-      notesList.appendChild(li);
+      // when successfull remove it from local list
+      await renderNotes();
     });
-  };
 
+    li.appendChild(deleteBtn);
+    notesList.appendChild(li);
+  });
+};
 
 // create a new list element and add it to db
 const createNewNotebook = async (event) => {
@@ -93,9 +96,8 @@ const removeChildren = (parent) => {
 // EVENT LISTENERS
 
 window.addEventListener("load", async () => {
-    renderNotebooks();
+  renderNotebooks();
   renderNotes();
-
 });
 
 addListBtn.addEventListener("click", createNewNotebook);

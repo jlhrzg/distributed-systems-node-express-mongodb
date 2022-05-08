@@ -15,7 +15,7 @@ const noteSaveButton = document.getElementById("note-save");
 const initNote = async (note) => {
   document.title = note.title;
   noteTitle.textContent = note.title;
-  noteCreated.textContent =  note.createdAt;
+  noteCreated.textContent = note.createdAt;
   noteUpdated.textContent = note.updatedAt;
 };
 
@@ -49,5 +49,5 @@ noteSaveButton.addEventListener("click", async () => {
 
   let update = await updateNote(updatedNote);
   initNote(update);
-  alert("Successfully saved note.")
+  alert("Successfully saved note.");
 });

@@ -25,7 +25,7 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   const notebook = await Notebook.create({
     title: req.body.title,
-    description: req.body.description
+    description: req.body.description,
   });
   res.status(201).json(notebook);
 });
@@ -40,10 +40,14 @@ router.put("/:id", async (req, res) => {
   }
 
   // if the notebook is available, then update it
-  const updatedNotebook = await Notebook.findByIdAndUpdate(req.params.id, req.body, {
-    title: req.body.title,
-    description: req.body.description
-  });
+  const updatedNotebook = await Notebook.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    {
+      title: req.body.title,
+      description: req.body.description,
+    }
+  );
 
   // return the updated notebook
   res.json(updatedNotebook);

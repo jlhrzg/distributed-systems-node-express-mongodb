@@ -3,9 +3,10 @@ import { getAllNotes, createNote, deleteNote } from "../utils/note.js";
 
 // SELECTORS
 const notebookHeading = document.querySelector("#notebook-heading");
-const changeNotebookTitleBtn = document.querySelector("#change-notebook-title-btn");
+const changeNotebookTitleBtn = document.querySelector(
+  "#change-notebook-title-btn"
+);
 const newNotebookTitleInput = document.querySelector("#new-notebook-title");
-
 
 const newListNameInput = document.querySelector("#new-list-name");
 const saveNewListNameBtn = document.querySelector("#save-new-list-name-btn");
@@ -23,7 +24,7 @@ const removeChildren = (parent) => {
 const extractNotebookId = async () => {
   const notebookId = new URLSearchParams(window.location.search).get("id");
   const notebook = await getNotebookById(notebookId);
-  console.log(notebook)
+  console.log(notebook);
   document.title = notebook.title;
   notebookHeading.textContent = notebook.title;
   return notebook;
@@ -42,7 +43,7 @@ const createNewNote = async (event) => {
   if (newNoteTitleInput.value != "") {
     let newNote = {
       title: newNoteTitleInput.value,
-      notebookId: new URLSearchParams(window.location.search).get("id")
+      notebookId: new URLSearchParams(window.location.search).get("id"),
     };
     await createNote(newNote);
     newNoteTitleInput.value = "";
@@ -94,21 +95,19 @@ window.addEventListener("load", async () => {
 
 createNoteBtn.addEventListener("click", createNewNote);
 
-
 changeNotebookTitleBtn.addEventListener("click", async () => {
-  console.log(newNotebookTitleInput)
+  console.log(newNotebookTitleInput);
   if (newNotebookTitleInput.value === "Titel ändern") {
     return;
   }
 
-  if (newNotebookTitleInput.value != ""){
+  if (newNotebookTitleInput.value != "") {
     let newNote = {
-      ...await extractNotebookId(),
+      ...(await extractNotebookId()),
       title: newNotebookTitleInput.value,
     };
     const updatedNotebook = await updateNotebook(newNote);
     document.title = newNotebookTitleInput.value;
     notebookHeading.textContent = newNotebookTitleInput.value;
   }
-
 });

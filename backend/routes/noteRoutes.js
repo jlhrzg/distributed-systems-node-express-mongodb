@@ -10,7 +10,7 @@ router.post("/", async (req, res) => {
     title: req.body.title,
     description: req.body.description,
     content: "New Note",
-    notebookId: req.body.notebookId
+    notebookId: req.body.notebookId,
   });
   res.status(201).json(note);
 });
@@ -46,7 +46,7 @@ router.put("/:id", async (req, res) => {
     title: req.body.title,
     description: req.body.description,
     content: req.body.content,
-    notebookId: req.body.notebookId
+    notebookId: req.body.notebookId,
   });
 
   // return the updated note
