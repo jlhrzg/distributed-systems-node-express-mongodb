@@ -15,8 +15,11 @@ const noteSaveButton = document.getElementById("note-save");
 const initNote = async (note) => {
   document.title = note.title;
   noteTitle.textContent = note.title;
-  noteCreated.textContent = note.createdAt;
-  noteUpdated.textContent = note.updatedAt;
+  let createdDate = new Date(note.createdAt);
+  let updatedDate = new Date(note.updatedAt)
+
+  noteCreated.textContent = createdDate.toLocaleDateString() + ", " + createdDate.toLocaleTimeString();
+  noteUpdated.textContent = updatedDate.toLocaleDateString() + ", " + updatedDate.toLocaleTimeString();
 };
 
 const addNotebookLink = async (notebook) => {
@@ -49,5 +52,5 @@ noteSaveButton.addEventListener("click", async () => {
 
   let update = await updateNote(updatedNote);
   initNote(update);
-  alert("Successfully saved note.");
+  alert(`Die Notiz ${update.title} wurde erfolgreich gespeichert.`);
 });

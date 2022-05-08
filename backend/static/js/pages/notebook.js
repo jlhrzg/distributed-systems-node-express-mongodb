@@ -49,7 +49,7 @@ const createNewNote = async (event) => {
     newNoteTitleInput.value = "";
     initView();
   } else {
-    alert("Note title must not be empty");
+    alert("Der Titel des Notiz darf nicht leer sein.");
   }
 };
 

@@ -83,7 +83,7 @@ const createNewNotebook = async (event) => {
     addNotebookInput.value = "";
     await renderNotebooks();
   } else {
-    alert("Notebook title must not be empty!");
+    alert("Der Titel darf nicht leer sein.");
   }
 };
 
