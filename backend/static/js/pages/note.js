@@ -9,14 +9,14 @@ const noteTitle = document.getElementById("note-title");
 const notebookLink = document.getElementById("notebook-link");
 const noteCreated = document.getElementById("note-created");
 const noteUpdated = document.getElementById("note-updated");
-const noteContent = document.getElementById("note-content");
+const noteContent = document.getElementById("note-content-area");
 const noteSaveButton = document.getElementById("note-save");
 
 const initNote = async (note) => {
   document.title = note.title;
   noteTitle.textContent = note.title;
-  noteCreated.textContent = "Created: " + note.createdAt;
-  noteUpdated.textContent = "Updated: " + note.updatedAt;
+  noteCreated.textContent =  note.createdAt;
+  noteUpdated.textContent = note.updatedAt;
 };
 
 const addNotebookLink = async (notebook) => {

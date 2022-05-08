@@ -11,19 +11,18 @@
 
   <body>
     <h1 id="note-title"></h1>
-    <div class="container">
-      <p id="notebook-link">Notebook:</p>
-      <p id="note-created"></p>
-      <p id="note-updated"></p>
+    <div class="note-information">
+      <p id="notebook-link"><span style="font-weight:bold">Notebook:</span> </p>
+      <p><span style="font-weight:bold">Created: </span><span id="note-created"></span></p>
+      <p><span style="font-weight:bold">Updated: </span><span id="note-updated"></span></p>
     </div>
 
-
-    <div>
-      <textarea id="note-content"> </textarea>
+    <div class="note-content">
+      <textarea id="note-content-area"> </textarea>
     </div>
     <button id="note-save">Speichern</button>
-    <br/>
-    <a href="/">Home</a>
+    <a href="/"><button class="home-btn">Home</button></a>
+
     <script type="module" src="./js/pages/note.js"></script>
   </body>
 </html>
