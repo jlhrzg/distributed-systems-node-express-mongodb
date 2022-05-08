@@ -3,7 +3,6 @@ info:
   description: "This is a server API to store notebooks and notes"
   version: "1.0.0"
   title: "Distributed Systems Project"
-host: "petstore.swagger.io"
 basePath: "/v2"
 tags:
 - name: "notebook"
@@ -130,6 +129,3 @@ definitions:
       description:
         type: "string"
         example: "This notebook contains all information about the lecture distributed systems at DBWH Karlsruhe."
-externalDocs:
-  description: "Find out more about Swagger"
-  url: "http://swagger.io"
