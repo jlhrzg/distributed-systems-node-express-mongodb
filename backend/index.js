@@ -21,6 +21,9 @@ app.use(morgan("combined"));
 // cors middleware
 app.use(cors());
 
+// add static directory
+app.use(express.static('static'))
+
 app.use("/api/notebook", notebookRouter);
 app.use("/api/note", noteRouter)
 
