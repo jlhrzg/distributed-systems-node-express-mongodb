@@ -8,9 +8,6 @@ const changeNotebookTitleBtn = document.querySelector(
 );
 const newNotebookTitleInput = document.querySelector("#new-notebook-title");
 
-const newListNameInput = document.querySelector("#new-list-name");
-const saveNewListNameBtn = document.querySelector("#save-new-list-name-btn");
-
 const newNoteTitleInput = document.querySelector("#new-note-title");
 const createNoteBtn = document.querySelector("#create-note-btn");
 const notesList = document.querySelector(".note-list");
@@ -24,7 +21,6 @@ const removeChildren = (parent) => {
 const extractNotebookId = async () => {
   const notebookId = new URLSearchParams(window.location.search).get("id");
   const notebook = await getNotebookById(notebookId);
-  console.log(notebook);
   document.title = notebook.title;
   notebookHeading.textContent = notebook.title;
   return notebook;
@@ -62,10 +58,6 @@ const renderNotes = async (noteToShow) => {
     a.innerText = note.title;
     a.href = `/note.html?id=${note._id}`;
 
-    if (note.done) {
-      a.classList.add("done");
-    }
-
     li.appendChild(a);
 
     let deleteBtn = document.createElement("button");
@@ -96,7 +88,6 @@ window.addEventListener("load", async () => {
 createNoteBtn.addEventListener("click", createNewNote);
 
 changeNotebookTitleBtn.addEventListener("click", async () => {
-  console.log(newNotebookTitleInput);
   if (newNotebookTitleInput.value === "Titel ändern") {
     return;
   }

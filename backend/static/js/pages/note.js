@@ -16,10 +16,12 @@ const initNote = async (note) => {
   document.title = note.title;
   noteTitle.textContent = note.title;
   let createdDate = new Date(note.createdAt);
-  let updatedDate = new Date(note.updatedAt)
+  let updatedDate = new Date(note.updatedAt);
 
-  noteCreated.textContent = createdDate.toLocaleDateString() + ", " + createdDate.toLocaleTimeString();
-  noteUpdated.textContent = updatedDate.toLocaleDateString() + ", " + updatedDate.toLocaleTimeString();
+  noteCreated.textContent =
+    createdDate.toLocaleDateString() + ", " + createdDate.toLocaleTimeString();
+  noteUpdated.textContent =
+    updatedDate.toLocaleDateString() + ", " + updatedDate.toLocaleTimeString();
 };
 
 const addNotebookLink = async (notebook) => {

@@ -6,13 +6,17 @@ const Note = require("../models/noteModel");
 
 // create a note
 router.post("/", async (req, res) => {
-  const note = await Note.create({
-    title: req.body.title,
-    description: req.body.description,
-    content: "New Note",
-    notebookId: req.body.notebookId,
-  });
-  res.status(201).json(note);
+  try {
+    const note = await Note.create({
+      title: req.body.title,
+      description: req.body.description,
+      content: "New Note",
+      notebookId: req.body.notebookId,
+    });
+    res.status(201).json(note);
+  } catch (error) {
+    res.status(405).send();
+  }
 });
 
 // get all notes
@@ -42,15 +46,18 @@ router.put("/:id", async (req, res) => {
   }
 
   // if the note is available, then update it
-  const updatedNote = await Note.findByIdAndUpdate(req.params.id, req.body, {
-    title: req.body.title,
-    description: req.body.description,
-    content: req.body.content,
-    notebookId: req.body.notebookId,
-  });
-
-  // return the updated note
-  res.json(updatedNote);
+  try {
+    const updatedNote = await Note.findByIdAndUpdate(req.params.id, req.body, {
+      title: req.body.title,
+      description: req.body.description,
+      content: req.body.content,
+      notebookId: req.body.notebookId,
+    });
+    // return the updated note
+    res.json(updatedNote);
+  } catch (err) {
+    res.status(405).send();
+  }
 });
 
 // delete a note by id

@@ -211,8 +211,6 @@ paths:
       responses:
         "404":
           description: "Note not found"
-        "405":
-          description: "Validation exception"
 
 definitions:
   Notebook:

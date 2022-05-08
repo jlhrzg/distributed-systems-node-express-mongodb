@@ -2,7 +2,6 @@
 const API_URL = "http://localhost:3000/api/notebook";
 
 export const getAllNotebooks = async () => {
-  console.log("ALL Notebooks");
   const notebooks = await fetch(API_URL);
   return await notebooks.json();
 };
@@ -24,7 +23,6 @@ export const createNotebook = async (reqBody) => {
 };
 
 export const updateNotebook = async (notebook) => {
-  console.log(notebook);
   const updatedNotebook = await fetch(`${API_URL}/${notebook._id}`, {
     method: "PUT",
     headers: {

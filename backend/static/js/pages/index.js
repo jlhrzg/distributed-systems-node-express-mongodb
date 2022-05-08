@@ -31,6 +31,9 @@ const renderNotebooks = async () => {
     deleteBtn.addEventListener("click", async () => {
       // delete from db
       const deleted = await deleteNotebook(notebook._id);
+      if (deleted.status === 405){
+        alert("Notizbuch kann aufgrund von existierenden Notizen nicht gelöscht werden.")
+      }
       // when successfull remove it from local list
       await renderNotebooks();
     });
@@ -42,8 +45,6 @@ const renderNotebooks = async () => {
 
 const renderNotes = async () => {
   var notes = await getAllNotes();
-  console.log(notes);
-  console.log(notesList);
   removeChildren(notesList);
 
   notes.forEach((note) => {
