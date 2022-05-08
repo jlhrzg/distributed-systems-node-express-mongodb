@@ -1,6 +1,6 @@
 // import of backend API wrapper
-import { getAllNotebooks, createNotebook, deleteNotebook } from "../utils/notebooks.js";
-import {getAllNotes, deleteNote} from "../utils/notes.js";
+import { getAllNotebooks, createNotebook, deleteNotebook } from "../utils/notebook.js";
+import {getAllNotes, deleteNote} from "../utils/note.js";
 
 // selectors to append data
 const notebooksList = document.getElementById("notebooks-list");
@@ -16,7 +16,7 @@ const renderNotebooks = async () => {
   notebooks.forEach((notebook) => {
     let li = document.createElement("li");
     let a = document.createElement("a");
-    a.href = `/notebooks.html?id=${notebook._id}`;
+    a.href = `/notebook.html?id=${notebook._id}`;
     a.innerText = notebook.title;
     li.appendChild(a);
 

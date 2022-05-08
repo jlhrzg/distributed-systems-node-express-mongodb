@@ -24,6 +24,7 @@ export const createNotebook = async (reqBody) => {
 };
 
 export const updateNotebook = async (notebook) => {
+  console.log(notebook);
   const updatedNotebook = await fetch(`${API_URL}/${notebook._id}`, {
     method: "PUT",
     headers: {
