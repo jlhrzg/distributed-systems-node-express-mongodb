@@ -3,6 +3,8 @@ const express = require("express");
 const connectDb = require("./config/db");
 const notebookRouter = require("./routes/notebookRoutes");
 const noteRouter = require("./routes/noteRoutes");
+const morgan = require("morgan");
+const cors = require("cors");
 
 const app = express();
 
@@ -14,10 +16,12 @@ connectDb();
 
 // middleware to parse JSON requests
 app.use(express.json());
-
+// logging middleware
+app.use(morgan("combined"));
+// cors middleware
+app.use(cors());
 
 app.use("/api/notebook", notebookRouter);
-
 app.use("/api/note", noteRouter)
 
 app.listen(PORT, () => {
